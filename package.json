@@ -1,0 +1,19 @@
+{
+  "name": "neighborhood-map",
+  "version": "1.0.0",
+  "description": "A project submission for Udacity's Front End Developer Nanodegree",
+  "main": "/dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnlaine1/udacity-fend-neighborhood-map.git"
+  },
+  "author": "John Laine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnlaine1/udacity-fend-neighborhood-map/issues"
+  },
+  "homepage": "https://github.com/johnlaine1/udacity-fend-neighborhood-map#readme"
+}
