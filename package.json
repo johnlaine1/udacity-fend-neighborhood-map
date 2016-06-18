@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/johnlaine1/udacity-fend-neighborhood-map/issues"
   },
-  "homepage": "https://github.com/johnlaine1/udacity-fend-neighborhood-map#readme"
+  "homepage": "https://github.com/johnlaine1/udacity-fend-neighborhood-map#readme",
+  "devDependencies": {
+    "bower": "^1.7.9"
+  }
 }
