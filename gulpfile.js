@@ -12,25 +12,30 @@ var del = require('del');
 var reload = browserSync.reload;
 var port = 8080;
 
+// Copy Libraries and others
+gulp.task('copy', function() {
+  return gulp.src(['src/lib/**/*'])
+  .pipe(gulp.dest('dist/lib'))
+});
 // Minify HTML
 gulp.task('html-min', function() {
-  return gulp.src(['src/**/*.html', '!src/lib'])
+  return gulp.src(['src/**/*.html'])
     .pipe(htmlMin({collapseWhitespace: true}))
     .pipe(gulp.dest('dist'))
 });
 
 // Minify JS
 gulp.task('js-min', function() {
-  return gulp.src(['src/**/*.js'])
+  return gulp.src(['src/scripts/**/*.js'])
     .pipe(uglify())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/scripts'));
 });
 
 // Minify CSS
 gulp.task('css-min', function() {
-  return gulp.src(['src/**/*.css'])
+  return gulp.src(['src/styles/**/*.css'])
     .pipe(cleanCss())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('dist/styles'));
 });
 
 // Optimize images
@@ -70,7 +75,7 @@ gulp.task('serve:dist', ['default', 'watch'], function() {
 // The default gulp task.
 // Build production files into the 'dist' directory.
 gulp.task('default', ['clean'], function() {
-  runSequence('images', 'js-min', 'css-min', 'html-min');
+  runSequence('images', 'js-min', 'css-min', 'html-min', 'copy');
 });
 
 // Clean output directory.
