@@ -14,7 +14,7 @@ var port = 8080;
 
 // Minify HTML
 gulp.task('html-min', function() {
-  return gulp.src(['src/**/*.html'])
+  return gulp.src(['src/**/*.html', '!src/lib'])
     .pipe(htmlMin({collapseWhitespace: true}))
     .pipe(gulp.dest('dist'))
 });
