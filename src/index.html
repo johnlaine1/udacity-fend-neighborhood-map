@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Neighborhood Map</title>
     <link rel="stylesheet" href="styles/style.css"/>
-    
   </head>
   <body>
-    <div class="container">
+    <div id="container">
       <h1>Neighborhood Map</h1>
-      <div id="search">Search</div>
+      <label for="search">Search</label>
+      <input id="search">
       <div id="location-list">Location List</div>
-      <div id="map">Map</div>      
+      <div id="map">Map</div>
     </div>
-
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT4X1z63nfvEq_ARb42yDjaqlCnaETv_E"></script>
+      
+  <script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
   <script src="lib/jquery/dist/jquery.min.js"></script>
   <script src="lib/knockout/dist/knockout.js"></script>
   <script src="scripts/app.js"></script>   

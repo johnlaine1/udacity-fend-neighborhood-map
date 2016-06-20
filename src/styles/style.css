@@ -1,5 +1,9 @@
+html, body, #container {
+  height: 100%;
+}
+
 #map {
-  height: 500px;
-  width: 500px;
-  border: 1px black solid;
+  height: 100%;
+  width: 100%;
+  /*border: 1px black solid;*/
 }
