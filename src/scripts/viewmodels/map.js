@@ -4,7 +4,6 @@ var app = app || {};
 (function() {
   'use strict';
   
-  // ##### VIEW MODEL #####
   app.MapViewModel = function(locations) {
     var self = this;
     var map;

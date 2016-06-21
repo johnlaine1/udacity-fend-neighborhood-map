@@ -1,9 +1,15 @@
-html, body, #container {
+html, body, .container {
   height: 100%;
+}
+
+#location-list {
+  /*background-color: black;*/
 }
 
 #map {
   height: 100%;
-  width: 100%;
-  /*border: 1px black solid;*/
+}
+
+.title {
+  text-align: center;
 }
