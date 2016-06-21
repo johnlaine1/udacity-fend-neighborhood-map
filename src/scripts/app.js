@@ -1,9 +1,12 @@
-/**
- * Neighborhood Map
- */
-'use strict';
+/* global ko */
 
-var locations = [
+var app = app || {};
+
+(function () {
+  'use strict';
+
+  // Data used to create the locations.
+  app.locationData = [
   {
   title: 'one', 
   position: {lat: 33.4246989, lng: -111.694253}
@@ -26,29 +29,11 @@ var locations = [
   }
   ];
 
+  ko.applyBindings(new app.MapViewModel(app.locationData));  
+
+})();
 
 
-function initMap() {
-  var mapCenterStart = {lat: 33.4246989, lng: -111.694253};
-  
-  // Create a map object and specify the DOM element for display.
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: mapCenterStart,
-    scrollwheel: false,
-    zoom: 15
-  });
-  
-  // Create a marker and set its position.
-  locations.forEach(function(loc) {
-    new google.maps.Marker({
-    map: map,
-    position: loc.position,
-    title: loc.title
-  });  
-  });
-}
-
-window.addEventListener('load', initMap);
 
 
 
