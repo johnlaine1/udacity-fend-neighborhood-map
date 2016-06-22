@@ -4,7 +4,7 @@ var app = app || {};
 (function() {
   'use strict';
   
-  app.MapViewModel = function(locations) {
+  app.MapViewModel = function() {
     var self = this;
     var map;
     var mapCenter = {lat: 33.4246989, lng: -111.694253};
@@ -12,7 +12,7 @@ var app = app || {};
     self.locationList = ko.observableArray([]);
     
     // Populate the locationList array with initial data.
-    locations.forEach(function(loc) {
+    app.locationData.forEach(function(loc) {
       self.locationList.push(new app.Location(loc));
     });
     
@@ -72,6 +72,7 @@ var app = app || {};
       map.setCenter(mapCenter);
     });
   };
+  
   window.addEventListener('load', self.initMap); 
 
   };  
