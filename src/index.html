@@ -4,31 +4,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Neighborhood Map</title>
-    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="styles/style.css"/>
   </head>
   <body>
-    <div class="container">
-      <h1 class="title">Neighborhood Map</h1>
-        <div id="location-list">
-          <h3>Locations</h3>
-          <input id="search" placeholder="Filter Results" data-bind="textInput: searchInput">
-          <div class="list=group" data-bind="foreach: filteredLocations">
-            <a href="#" class="list-group-item" data-bind="text: title"></a>
+   <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
+   <label for="drawer-toggle" id="drawer-toggle-label"></label>
+   <header>Neighborhood Map</header>    
+      
+        <div id="drawer">
+          <h3 id="drawer-title">Locations</h3>
+          <input id="search-input" placeholder="Filter Results" data-bind="textInput: searchInput">
+          <div id="location-list" data-bind="foreach: filteredLocations">
+              <div class="location-item">
+                <h3 class="location-title" data-bind="text: title"></h3>
+              </div>
           </div>
         </div>
-        <div id="map"></div>
+        <div id="page-content">
+          <div id="map"></div>
         </div>
-      </div>
-    </div>
       
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT4X1z63nfvEq_ARb42yDjaqlCnaETv_E&libraries=places"></script>
-  <script src="lib/jquery/dist/jquery.min.js"></script>
-  <script src="lib/knockout/dist/knockout.js"></script>
-  <script src="scripts/viewmodels/map.js"></script>
-  <script src="scripts/models/location.js"></script>
-  <script src="scripts/app.js"></script>   
-
-
+      
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT4X1z63nfvEq_ARb42yDjaqlCnaETv_E&libraries=places"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/knockout/dist/knockout.js"></script>
+    <script src="scripts/viewmodels/map.js"></script>
+    <script src="scripts/models/location.js"></script>
+    <script src="scripts/app.js"></script> 
   </body>
 </html>
