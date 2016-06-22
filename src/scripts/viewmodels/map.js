@@ -1,4 +1,4 @@
-/* global ko */
+/* global ko google */
 var app = app || {};
 
 (function() {
@@ -7,7 +7,7 @@ var app = app || {};
   app.MapViewModel = function(locations) {
     var self = this;
     var map;
-    var mapCenterStart = {lat: 33.4246989, lng: -111.694253};
+    var mapCenter = {lat: 33.4246989, lng: -111.694253};
     
     self.locationList = ko.observableArray([]);
     
@@ -61,13 +61,18 @@ var app = app || {};
     self.initMap = function() {
     // Create a map object and specify the DOM element for display.
     map = new google.maps.Map(document.getElementById('map'), {
-      center: mapCenterStart,
+      center: mapCenter,
       scrollwheel: false,
       zoom: 15
     });
     
     self.renderMapMarkers();
+    // Reset the map to the center upon window resize.
+    google.maps.event.addDomListener(window, 'resize', function() {
+      map.setCenter(mapCenter);
+    });
   };
-  window.addEventListener('load', self.initMap);  
-  }  
+  window.addEventListener('load', self.initMap); 
+
+  };  
 })();
