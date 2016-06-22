@@ -7,7 +7,7 @@ var app = app || {};
   app.MapViewModel = function() {
     var self = this;
     var map;
-    var mapCenter = {lat: 33.4246989, lng: -111.694253};
+    var mapCenter = {lat: 33.386463, lng: -111.805832};
     
     self.locationList = ko.observableArray([]);
     
@@ -63,7 +63,7 @@ var app = app || {};
     map = new google.maps.Map(document.getElementById('map'), {
       center: mapCenter,
       scrollwheel: false,
-      zoom: 15
+      zoom: 12
     });
     
     self.renderMapMarkers();
