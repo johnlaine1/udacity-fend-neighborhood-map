@@ -1,4 +1,4 @@
-/* global ko google $ */
+/* global ko google $ map */
 
 var app = app || {};
 
@@ -39,47 +39,60 @@ var app = app || {};
    */
   app.Location = function(data) {
     var self = this;
-
+    
+    var fourSquare = function() {
+      return {
+        baseUrl: 'https://api.foursquare.com/v2/venues/',
+        clientID: 'ME0C0R5XXBXVKZQDAHQCUNWJ0J2GUM4UOQ0C4QDD0QCKPOCK',
+        clientSecret: 'RNTL40FOVCMQUSIMMQFJQJIVOJJS5C4R04DICO5BSEOKEBX3',
+        version: '20160601'
+      };
+    };
+    
+    var infoWindowContent = function(data) {
+      var name = data.name;
+      var phone = data.contact.formattedPhone;
+      var address = data.location.formattedAddress[0] + '<br>' + data.location.formattedAddress[1];
+      return '<h3>' + name + '</h3>' +
+             '<div>' + address + '</div>' +
+             '<div>' + phone + '</div>';
+    };
+    
     self.id = ko.observable(data.id);
     self.title = ko.observable(data.title);
     self.position = ko.observable(data.position);
     
     self.mapMarker = new google.maps.Marker({
-      position: {lat: data.position.lat, lng: data.position.lng},
+      position: {lat: self.position().lat, lng: self.position().lng},
       title: self.title(),
       map: null
     });
     
     self.mapMarker.addListener('click', function() {
-      
       $.ajax({
         dataType: "json",
-        url: self.fourSquare.baseUrl + self.id(),
+        url: fourSquare().baseUrl + self.id(),
         data: {
-          client_id: self.fourSquare.clientID,
-          client_secret: self.fourSquare.clientSecret,
-          v: self.fourSquare.version
+          client_id: fourSquare().clientID,
+          client_secret: fourSquare().clientSecret,
+          v: fourSquare().version
         }
-      })
+      })      
         .done(function(res) {
-          var content;
-          var data = res.response.venue
-          var infoWindow = new google.maps.InfoWindow({
-            content: data.name
-          }); 
-          infoWindow.open(map, self.mapMarker);
+          new google.maps.InfoWindow({
+            content: infoWindowContent(res.response.venue)
+          })
+            .open(map, self.mapMarker);
+            
           console.log(res);
         })
         .fail(function(error) {
-          console.log(error);
+          new google.maps.InfoWindow({
+            content: 'Sorry, there seems to have been an error.'
+          })
+            .open(map, self.mapMarker);
         }); 
     });
-  };
-  
-  app.Location.prototype.fourSquare = {
-    baseUrl: 'https://api.foursquare.com/v2/venues/',
-    clientID: 'ME0C0R5XXBXVKZQDAHQCUNWJ0J2GUM4UOQ0C4QDD0QCKPOCK',
-    clientSecret: 'RNTL40FOVCMQUSIMMQFJQJIVOJJS5C4R04DICO5BSEOKEBX3',
-    version: '20160601',
-  };
+  }; 
+
 })();
