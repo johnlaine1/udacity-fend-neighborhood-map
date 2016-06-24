@@ -87,7 +87,7 @@ var app = app || {};
         self.mapMarker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function() {
           self.mapMarker.setAnimation(null);
-          }, 750);   
+          }, 700);   
         
         // ######### DEV ############
         console.log(res);
