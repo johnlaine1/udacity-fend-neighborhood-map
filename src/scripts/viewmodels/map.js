@@ -4,6 +4,8 @@ var app = app || {};
 (function() {
   'use strict';
   
+  app.infoWindow = new google.maps.InfoWindow({});
+  
   app.MapViewModel = function() {
     var self = this;
     var map;
@@ -72,6 +74,16 @@ var app = app || {};
       map.setCenter(mapCenter);
     });
   };
+  
+    self.showMarkerInfoWindow = function(location) {
+      console.log(location);
+      location.getData()
+        .done(location.getDataSuccess())
+        .fail(location.getDataFail());
+    };
+    
+    
+
   
   window.addEventListener('load', self.initMap); 
 

@@ -40,13 +40,11 @@ var app = app || {};
   app.Location = function(data) {
     var self = this;
     
-    var fourSquare = function() {
-      return {
+    self.fourSquare = {
         baseUrl: 'https://api.foursquare.com/v2/venues/',
         clientID: 'ME0C0R5XXBXVKZQDAHQCUNWJ0J2GUM4UOQ0C4QDD0QCKPOCK',
         clientSecret: 'RNTL40FOVCMQUSIMMQFJQJIVOJJS5C4R04DICO5BSEOKEBX3',
         version: '20160601'
-      };
     };
     
     var infoWindowContent = function(data) {
@@ -65,33 +63,49 @@ var app = app || {};
     self.mapMarker = new google.maps.Marker({
       position: {lat: self.position().lat, lng: self.position().lng},
       title: self.title(),
+      animation: google.maps.Animation.DROP,
       map: null
     });
     
-    self.mapMarker.addListener('click', function() {
-      $.ajax({
+    self.getData = function() {
+      return $.ajax({
         dataType: "json",
-        url: fourSquare().baseUrl + self.id(),
+        url: self.fourSquare.baseUrl + self.id(),
         data: {
-          client_id: fourSquare().clientID,
-          client_secret: fourSquare().clientSecret,
-          v: fourSquare().version
+          client_id: self.fourSquare.clientID,
+          client_secret: self.fourSquare.clientSecret,
+          v: self.fourSquare.version
         }
-      })      
-        .done(function(res) {
-          new google.maps.InfoWindow({
-            content: infoWindowContent(res.response.venue)
-          })
-            .open(map, self.mapMarker);
-            
-          console.log(res);
-        })
-        .fail(function(error) {
-          new google.maps.InfoWindow({
-            content: 'Sorry, there seems to have been an error.'
-          })
-            .open(map, self.mapMarker);
-        }); 
+      });
+    };
+    
+    self.getDataSuccess = function() {
+      return function(res) {
+        // Show the info window
+        app.infoWindow.setContent(infoWindowContent(res.response.venue));
+        app.infoWindow.open(map, self.mapMarker);
+        // Make the map icon bounce
+        self.mapMarker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function() {
+          self.mapMarker.setAnimation(null);
+          }, 750);   
+        
+        // ######### DEV ############
+        console.log(res);
+      };
+    };
+    
+    self.getDataFail = function() {
+      return function() {
+        app.infoWindow.setContent('Sorry, there has been an error');
+        app.infoWindow.open(map, self.mapMarker);        
+      }
+    }
+    
+    self.mapMarker.addListener('click', function() {
+      self.getData()
+        .done(self.getDataSuccess())
+        .fail(self.getDataFail()); 
     });
   }; 
 
