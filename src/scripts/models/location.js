@@ -82,7 +82,7 @@ var app = app || {};
       return function(res) {
         // Show the info window
         app.infoWindow.setContent(self.infoWindowContent(res.response.venue));
-        app.infoWindow.open(map, self.mapMarker);
+        app.infoWindow.open(app.map, self.mapMarker);
         // Make the map icon bounce
         self.mapMarker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function() {
@@ -97,7 +97,7 @@ var app = app || {};
     var self = this;
     return function() {
       app.infoWindow.setContent('Sorry, there has been an error');
-      app.infoWindow.open(map, self.mapMarker);        
+      app.infoWindow.open(app.map, self.mapMarker);        
     };
   };
   app.Location.prototype.fourSquare = {

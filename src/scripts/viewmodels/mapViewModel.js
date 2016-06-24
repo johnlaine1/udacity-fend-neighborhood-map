@@ -4,12 +4,8 @@ var app = app || {};
 (function() {
   'use strict';
   
-  app.infoWindow = new google.maps.InfoWindow({});
-  
   app.MapViewModel = function() {
     var self = this;
-    var map;
-    var mapCenter = {lat: 33.386463, lng: -111.805832};
     
     self.locationList = ko.observableArray([]);
     
@@ -41,6 +37,8 @@ var app = app || {};
       }
     });
 
+    // We need to re-render the markers each time the filteredLocations
+    // property changes.
     self.searchInput.subscribe(function(newVal) {
       self.renderMapMarkers();
     });
@@ -55,37 +53,24 @@ var app = app || {};
     self.renderMapMarkers = function() {
       // Clear all existing markers first.
       self.clearAllMarkers();
+      console.log(self.filteredLocations());
       self.filteredLocations().forEach(function(loc) {
-        loc.mapMarker.setMap(map);
+        loc.mapMarker.setMap(app.map);
       });
     };
 
-    self.initMap = function() {
-    // Create a map object and specify the DOM element for display.
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: mapCenter,
-      scrollwheel: false,
-      zoom: 12
-    });
-    
-    self.renderMapMarkers();
-    // Reset the map to the center upon window resize.
-    google.maps.event.addDomListener(window, 'resize', function() {
-      map.setCenter(mapCenter);
-    });
-  };
-  
     self.showMarkerInfoWindow = function(location) {
       console.log(location);
       location.getData()
         .done(location.getDataSuccess())
         .fail(location.getDataFail());
     };
-    
-    
 
-  
-  window.addEventListener('load', self.initMap); 
+
+    window.addEventListener('load', function() {
+      app.initMap();
+      self.renderMapMarkers();
+    });
 
   };  
 })();
