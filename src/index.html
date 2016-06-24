@@ -15,6 +15,10 @@
         <div id="drawer">
           <h3 id="drawer-title">Locations</h3>
           <input id="search-input" placeholder="Filter Results" data-bind="textInput: searchInput">
+          <div id="search-options">
+            <input type="radio" class="search-type" name="search-type" value="exact" data-bind="checked: searchType"> Exact
+            <input type="radio" class="search-type" name="search-type" value="contains" data-bind="checked: searchType"> Contains
+          </div>
           <div id="location-list" data-bind="foreach: filteredLocations">
               <div class="location-item" data-bind="click: $root.showMarkerInfoWindow">
                 <h3 class="location-title" data-bind="text: title"></h3>

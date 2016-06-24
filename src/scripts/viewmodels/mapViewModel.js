@@ -16,6 +16,7 @@ var app = app || {};
     
     // Grab the search value entered by the user
     self.searchInput = ko.observable("");
+    self.searchType = ko.observable('exact');
     
     self.filteredLocations = ko.computed(function() {
       var filter = self.searchInput().toLowerCase();
@@ -27,9 +28,17 @@ var app = app || {};
       } else {
           return self.locationList().filter(function(location) {
             title = location.title().toLowerCase();
-            
+              
+              // We use the searchType variable to check if the user wants the
+              // results to only "contain" the string the enter or for the 
+              // results to match the string "exactly"
               for (var i = 0, len = filter.length; i < len; i++) {
-                if (!title.includes(filter[i])) { return false; } 
+                if (self.searchType() === 'contains') {
+                  if (!title.includes(filter[i])) { return false; } 
+                } else 
+                if (self.searchType() === 'exact') {
+                  if (title[i] !== filter[i]) { return false; } 
+                }
               }
               return true;
 
@@ -38,8 +47,9 @@ var app = app || {};
     });
 
     // We need to re-render the markers each time the filteredLocations
-    // property changes.
-    self.searchInput.subscribe(function(newVal) {
+    // property changes. This will update the map as the user enters a value
+    // into the search box.
+    self.filteredLocations.subscribe(function(newVal) {
       self.renderMapMarkers();
     });
     
