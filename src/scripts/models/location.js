@@ -39,27 +39,10 @@ var app = app || {};
    */
   app.Location = function(data) {
     var self = this;
-    
-    self.fourSquare = {
-        baseUrl: 'https://api.foursquare.com/v2/venues/',
-        clientID: 'ME0C0R5XXBXVKZQDAHQCUNWJ0J2GUM4UOQ0C4QDD0QCKPOCK',
-        clientSecret: 'RNTL40FOVCMQUSIMMQFJQJIVOJJS5C4R04DICO5BSEOKEBX3',
-        version: '20160601'
-    };
-    
-    var infoWindowContent = function(data) {
-      var name = data.name;
-      var phone = data.contact.formattedPhone;
-      var address = data.location.formattedAddress[0] + '<br>' + data.location.formattedAddress[1];
-      return '<h3>' + name + '</h3>' +
-             '<div>' + address + '</div>' +
-             '<div>' + phone + '</div>';
-    };
-    
+
     self.id = ko.observable(data.id);
     self.title = ko.observable(data.title);
     self.position = ko.observable(data.position);
-    
     self.mapMarker = new google.maps.Marker({
       position: {lat: self.position().lat, lng: self.position().lng},
       title: self.title(),
@@ -67,7 +50,23 @@ var app = app || {};
       map: null
     });
     
-    self.getData = function() {
+    self.mapMarker.addListener('click', function() {
+      self.getData()
+        .done(self.getDataSuccess())
+        .fail(self.getDataFail()); 
+    });
+  }; 
+  
+  app.Location.prototype.infoWindowContent = function(data) {
+    var name = data.name;
+    var phone = data.contact.formattedPhone;
+    var address = data.location.formattedAddress[0] + '<br>' + data.location.formattedAddress[1];
+    return '<h3>' + name + '</h3>' +
+           '<div>' + address + '</div>' +
+           '<div>' + phone + '</div>';
+  };
+  app.Location.prototype.getData = function() {
+    var self = this;
       return $.ajax({
         dataType: "json",
         url: self.fourSquare.baseUrl + self.id(),
@@ -78,11 +77,11 @@ var app = app || {};
         }
       });
     };
-    
-    self.getDataSuccess = function() {
+  app.Location.prototype.getDataSuccess = function() {
+    var self = this;
       return function(res) {
         // Show the info window
-        app.infoWindow.setContent(infoWindowContent(res.response.venue));
+        app.infoWindow.setContent(self.infoWindowContent(res.response.venue));
         app.infoWindow.open(map, self.mapMarker);
         // Make the map icon bounce
         self.mapMarker.setAnimation(google.maps.Animation.BOUNCE);
@@ -93,20 +92,19 @@ var app = app || {};
         // ######### DEV ############
         console.log(res);
       };
-    };
-    
-    self.getDataFail = function() {
-      return function() {
-        app.infoWindow.setContent('Sorry, there has been an error');
-        app.infoWindow.open(map, self.mapMarker);        
-      }
-    }
-    
-    self.mapMarker.addListener('click', function() {
-      self.getData()
-        .done(self.getDataSuccess())
-        .fail(self.getDataFail()); 
-    });
   }; 
+  app.Location.prototype.getDataFail = function() {
+    var self = this;
+    return function() {
+      app.infoWindow.setContent('Sorry, there has been an error');
+      app.infoWindow.open(map, self.mapMarker);        
+    };
+  };
+  app.Location.prototype.fourSquare = {
+    baseUrl: 'https://api.foursquare.com/v2/venues/',
+    clientID: 'ME0C0R5XXBXVKZQDAHQCUNWJ0J2GUM4UOQ0C4QDD0QCKPOCK',
+    clientSecret: 'RNTL40FOVCMQUSIMMQFJQJIVOJJS5C4R04DICO5BSEOKEBX3',
+    version: '20160601'
+  };
 
 })();
