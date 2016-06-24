@@ -166,7 +166,7 @@ text-decoration:none;
 color:white; 
 } 
 
-/* Responsive MQ */ 
+/* Media Queries */ 
 
 @media all and (max-width:350px) { 
 

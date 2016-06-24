@@ -66,7 +66,6 @@ var app = app || {};
         .fail(location.getDataFail());
     };
 
-
     window.addEventListener('load', function() {
       app.initMap();
       self.renderMapMarkers();
