@@ -69,7 +69,6 @@ var app = app || {};
     };
 
     self.showMarkerInfoWindow = function(location) {
-      console.log(location);
       location.getData()
         .done(location.getDataSuccess())
         .fail(location.getDataFail());

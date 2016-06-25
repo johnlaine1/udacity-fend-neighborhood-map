@@ -5,7 +5,7 @@ var app = app || {};
 (function () {
   'use strict';
 
-  // Data used to create the initial locations.
+  // Data used to create the initial locations
   app.locationData = [
     {
     id: "50eb8a09e4b0727b01907fc5",
@@ -95,17 +95,19 @@ var app = app || {};
   ];
   
   /**
-   * A class to represent a location point.
+   * @description Represents a location
+   * @constructor
+   * @param {object} data - data used to create the location
    */
   app.Location = function(data) {
     var self = this;
 
-    self.id = ko.observable(data.id);
-    self.title = ko.observable(data.title);
-    self.position = ko.observable(data.position);
+    self.id = data.id;
+    self.title = data.title;
+    self.position = data.position;
     self.mapMarker = new google.maps.Marker({
-      position: {lat: self.position().lat, lng: self.position().lng},
-      title: self.title(),
+      position: {lat: self.position.lat, lng: self.position.lng},
+      title: self.title,
       animation: google.maps.Animation.DROP,
       map: null
     });
@@ -132,7 +134,7 @@ var app = app || {};
     var self = this;
       return $.ajax({
         dataType: "json",
-        url: self.fourSquare.baseUrl + self.id(),
+        url: self.fourSquare.baseUrl + self.id,
         data: {
           client_id: self.fourSquare.clientID,
           client_secret: self.fourSquare.clientSecret,
@@ -150,10 +152,7 @@ var app = app || {};
         self.mapMarker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function() {
           self.mapMarker.setAnimation(null);
-          }, 700);   
-        
-        // ######### DEV ############
-        console.log(res);
+          }, 700);
       };
   }; 
   app.Location.prototype.getDataFail = function() {
