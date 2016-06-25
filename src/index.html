@@ -9,8 +9,7 @@
   <body>
    <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
    <label for="drawer-toggle" id="drawer-toggle-label"></label>
-   <header>Neighborhood Map</header>    
-      
+   <header>Neighborhood Map</header>  
         <div id="drawer">
           <h3 id="drawer-title">Locations</h3>
           <input id="search-input" placeholder="Filter Results" data-bind="textInput: searchInput">
@@ -30,7 +29,6 @@
             Data provided by <a href="https://foursquare.com">FourSquare</a>
           </div>
         </div>
-      
     <script src="scripts/map.js"></script> 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT4X1z63nfvEq_ARb42yDjaqlCnaETv_E&libraries=places&callback=app.initMap" onerror="app.googleError()"></script>    
     <script src="lib/jquery/dist/jquery.min.js"></script>

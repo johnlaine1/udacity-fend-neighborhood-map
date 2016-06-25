@@ -70,7 +70,7 @@ z-index: 0;
 text-align: center;
 }
 
-/* drawer pane - note the 0px width */ 
+/* drawer pane */ 
 
 #drawer { 
 position: fixed; 
@@ -102,8 +102,7 @@ text-align: center;
 }
 
 #location-list .location-item {
-  padding: 10px;
-  height: 2em;
+  padding: 5px;
 }
 
 .location-item:hover {
@@ -112,6 +111,10 @@ text-align: center;
 }
 
 #location-list .location-title {
+  color: white;
+}
+
+#search-options {
   color: white;
 }
 
@@ -158,27 +161,6 @@ left: 0px;
 
 #drawer-toggle:checked ~ #page-content { 
 margin-left: 300px; 
-}
-
-/* Menu item styles */ 
-
-#drawer ul { 
-list-style-type:none; 
-} 
-
-#drawer ul a { 
-display:block; 
-padding:10px; 
-color:#c7c7c7; 
-text-decoration:none; 
-} 
-
-#drawer ul a:hover { 
-color:white; 
-} 
-
-#search-options {
-  color: white;
 }
 
 /* Media Queries */ 
