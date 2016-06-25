@@ -38,11 +38,6 @@ var app = app || {};
     position: {lat: 33.38529959859565, lng: -111.75477504730225}
     },
     {
-    id: "4ac82dc3f964a520e2bb20e3",
-    title: "In-N-Out Burger",
-    position: {lat: 33.383402588394326, lng: -111.8063008498236}
-    },
-    {
     id: "4b365a3bf964a5206b3325e3",
     title: "Cheba Hut",
     position: {lat: 33.39350516148516, lng: -111.86845779418945}
@@ -93,11 +88,6 @@ var app = app || {};
     position: {lat: 33.413119617731645, lng: -111.82601512041239}
     },
     {
-    id: "4a441656f964a5201ba71fe3",
-    title: "Pita Jungle",
-    position: {lat: 33.39177632454111, lng: -111.78789496421814}
-    },
-    {
     id: "4bfd7254b68d0f4743cde857",
     title: "India Oven",
     position: {lat: 33.39177632454111, lng: -111.78789496421814}
@@ -131,7 +121,8 @@ var app = app || {};
     var name = data.name;
     var phone = data.contact.formattedPhone;
     var address = data.location.formattedAddress[0] + '<br>' + data.location.formattedAddress[1];
-    return '<h3>' + name + '</h3>' +
+    var websiteUrl = data.shortUrl;
+    return '<h3><a href="' + websiteUrl + '"target=_blank>' + name + '</a></h3>' +
            '<div>' + address + '</div>' +
            '<div>' + phone + '</div>';
   };

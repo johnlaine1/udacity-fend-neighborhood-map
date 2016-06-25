@@ -14,22 +14,22 @@ var app = app || {};
     // or more precisely, the calls to 'google' not to be called until we know
     // that the 'google' script has finished loading.
     if (typeof google !== 'undefined') { 
-      var map;
       var mapCenter = {lat: 33.386463, lng: -111.805832};
+      var mapZoom = 11;
       
+      // We will share one infoWindow amoung all markers.
       app.infoWindow = new google.maps.InfoWindow({});
       
-      map = new google.maps.Map(document.getElementById('map'), {
+      app.map = new google.maps.Map(document.getElementById('map'), {
         center: mapCenter,
         scrollwheel: false,
-        zoom: 12
+        zoom: mapZoom
       });  
       
       google.maps.event.addDomListener(window, 'resize', function() {
-        map.setCenter(mapCenter);
+        app.map.setCenter(mapCenter);
       }); 
     
-      app.map = map;
     }
   };
   

@@ -70,7 +70,7 @@ z-index: 0;
 text-align: center;
 }
 
-/* drawer menu pane - note the 0px width */ 
+/* drawer pane - note the 0px width */ 
 
 #drawer { 
 position: fixed; 
@@ -86,19 +86,6 @@ padding: 20px;
 text-align: center;
 } 
 
-/* actual page content pane */ 
-
-#page-content { 
-margin-left: 0px; 
-margin-top: 50px; 
-width: 100%; 
-height: calc(100% - 50px); 
-overflow-x:hidden; 
-overflow-y:scroll; 
--webkit-overflow-scrolling: touch; 
-padding: 20px; 
-}
-
 #drawer-title {
   color: white;
   text-align: center;
@@ -106,11 +93,15 @@ padding: 20px;
 }
 
 #search-input {
-  margin-bottom: 25px;
+  margin-bottom: 5px;
   height: 2em;
 }
+
+#search-options {
+  margin-bottom: 20px;  
+}
+
 #location-list .location-item {
-  border: 1px gray solid;
   padding: 10px;
   height: 2em;
 }
@@ -122,6 +113,19 @@ padding: 20px;
 
 #location-list .location-title {
   color: white;
+}
+
+/* page content pane */ 
+
+#page-content { 
+margin-left: 0px; 
+margin-top: 50px; 
+width: 100%; 
+height: calc(100% - 50px); 
+overflow-x:hidden; 
+overflow-y:scroll; 
+-webkit-overflow-scrolling: touch; 
+padding: 20px; 
 }
 
 #map {
