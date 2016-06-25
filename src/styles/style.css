@@ -132,6 +132,13 @@ padding: 20px;
   height: 100%;
 }
 
+/* InfoWindow */
+
+#infowindow-rating {
+  font-weight: bold;  
+  margin-top: 5px;
+}
+
 /* checked styles (menu open state) */ 
 
 #drawer-toggle:checked ~ #drawer-toggle-label { 

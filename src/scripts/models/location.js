@@ -122,9 +122,11 @@ var app = app || {};
     var phone = data.contact.formattedPhone;
     var address = data.location.formattedAddress[0] + '<br>' + data.location.formattedAddress[1];
     var websiteUrl = data.shortUrl;
-    return '<h3><a href="' + websiteUrl + '"target=_blank>' + name + '</a></h3>' +
-           '<div>' + address + '</div>' +
-           '<div>' + phone + '</div>';
+    var rating = data.rating;
+    return '<h3 id="infowindow-name"><a href="' + websiteUrl + '"target=_blank>' + name + '</a></h3>' +
+           '<div id="infowindow-address">' + address + '</div>' +
+           '<div id="inforwindow-phone">' + phone + '</div>' +
+           '<div id="infowindow-rating">Rating: ' + rating + '</div>';
   };
   app.Location.prototype.getData = function() {
     var self = this;

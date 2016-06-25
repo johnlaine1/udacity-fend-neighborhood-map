@@ -35,7 +35,7 @@ var app = app || {};
   
   app.googleError = function() {
     console.log('There has been an error');
-    document.getElementById('page-content').innerHTML = '<h1>Sorry, Google Maps has failed to load</h1>';
+    document.getElementById('page-content').innerHTML = '<h1>Sorry, Google Maps has failed to load.</h1>';
   };
   
 })();
