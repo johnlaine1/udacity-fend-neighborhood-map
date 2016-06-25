@@ -1,4 +1,4 @@
-/* global ko google $ map */
+/* global google */
 
 var app = app || {};
 
@@ -122,9 +122,11 @@ var app = app || {};
   app.Location.prototype.infoWindowContent = function(data) {
     var name = data.name;
     var phone = data.contact.formattedPhone;
-    var address = data.location.formattedAddress[0] + '<br>' + data.location.formattedAddress[1];
+    var address = data.location.formattedAddress[0] + '<br>' + 
+                  data.location.formattedAddress[1];
     var websiteUrl = data.shortUrl;
     var rating = data.rating;
+    
     return '<h3 id="infowindow-name"><a href="' + websiteUrl + '"target=_blank>' + name + '</a></h3>' +
            '<div id="infowindow-address">' + address + '</div>' +
            '<div id="inforwindow-phone">' + phone + '</div>' +
@@ -148,6 +150,7 @@ var app = app || {};
         // Show the info window
         app.infoWindow.setContent(self.infoWindowContent(res.response.venue));
         app.infoWindow.open(app.map, self.mapMarker);
+        
         // Make the map icon bounce
         self.mapMarker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function() {
@@ -158,7 +161,7 @@ var app = app || {};
   app.Location.prototype.getDataFail = function() {
     var self = this;
     return function() {
-      app.infoWindow.setContent('Sorry, there has been an error');
+      app.infoWindow.setContent('<h3>Sorry, there seems to have been an error.<h3>');
       app.infoWindow.open(app.map, self.mapMarker);        
     };
   };

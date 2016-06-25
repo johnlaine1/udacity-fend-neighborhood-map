@@ -1,4 +1,4 @@
-/* global ko google */
+/* global ko */
 var app = app || {};
 
 (function() {
@@ -14,10 +14,13 @@ var app = app || {};
       self.locationList.push(new app.Location(loc));
     });
     
-    // Grab the search value entered by the user
+    // Grab the search value entered by the user.
     self.searchInput = ko.observable("");
+    
+    // Get the search type entered by the user, default is exact.
     self.searchType = ko.observable('exact');
     
+    // Returns an array of locations filtered by the search input.
     self.filteredLocations = ko.computed(function() {
       var filter = self.searchInput().toLowerCase();
       var title;
@@ -60,6 +63,8 @@ var app = app || {};
       });
     };
     
+    // Render all map markers attached to location objects in the filteredLocations
+    // array.
     self.renderMapMarkers = function() {
       // Clear all existing markers first.
       self.clearAllMarkers();
@@ -68,6 +73,7 @@ var app = app || {};
       });
     };
 
+    // Show the infoWindow for the passed in location object
     self.showMarkerInfoWindow = function(location) {
       location.getData()
         .done(location.getDataSuccess())
