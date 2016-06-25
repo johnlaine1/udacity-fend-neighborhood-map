@@ -9,7 +9,7 @@ list of these markers. When a marker of list item is selected, additional inform
 will appear in an info window above the selected map marker.
 
 ## Running the Application
-1. Clone the project to your local machine.
+1. Clone the project to your local machine
 2. Be sure to have both npm and bower installed on your machine and then from the command line run `npm install && bower install` to install needed packages.
 3. Run `gulp serve:dist` and point your browser to localhost:8080
 4. Alternatively you can run just run `gulp` instead of `gulp serve:dist` and point your browser to /dist/index.html
