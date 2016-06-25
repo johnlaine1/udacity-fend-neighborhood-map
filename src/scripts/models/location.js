@@ -31,6 +31,76 @@ var app = app || {};
     id: "4ac7a034f964a52090b820e3",
     title: "T.C. Eggington's", 
     position: {lat: 33.383771, lng: -111.859321}
+    },
+    {
+    id: "4bff0d3f369476b08b4f8d1f",
+    title: "RA Sushi Bar Restaurant",
+    position: {lat: 33.38529959859565, lng: -111.75477504730225}
+    },
+    {
+    id: "4ac82dc3f964a520e2bb20e3",
+    title: "In-N-Out Burger",
+    position: {lat: 33.383402588394326, lng: -111.8063008498236}
+    },
+    {
+    id: "4b365a3bf964a5206b3325e3",
+    title: "Cheba Hut",
+    position: {lat: 33.39350516148516, lng: -111.86845779418945}
+    },
+    {
+    id: "4b59150df964a520ab7b28e3",
+    title: "Barro's Pizza",
+    position: {lat: 33.436455264724906, lng: -111.78927898406982}
+    },
+    {
+    id: "4b887f19f964a52038fc31e3",
+    title: "Waldo's BBQ",
+    position: {lat: 33.41577869844659, lng: -111.73247954030153}
+    },
+    {
+    id: "52aa261911d26f5f9b3faaf7",
+    title: "Pita Jungle",
+    position: {lat: 33.385248298035464, lng: -111.75658988035073}
+    },
+    {
+    id: "4afe1623f964a520cd2d22e3",
+    title: "In-N-Out Burger",
+    position: {lat: 33.389814545635794, lng: -111.85772895812988}
+    },
+    {
+    id: "4c79cef681bca093e9dffe14",
+    title: "Zur Kate",
+    position: {lat: 33.414961, lng: -111.72683737}
+    },
+    {
+    id: "546a7bb5498eae88ec062332",
+    title: "The Draft Sports Grill",
+    position: {lat: 33.390955834830145, lng: -111.85527781345631}
+    },
+    {
+    id: "4a3303d6f964a520ed9a1fe3",
+    title: "Cornish Pasty Co",
+    position: {lat: 33.36260485627506, lng: -111.87603235244751}
+    },
+    {
+    id: "4fd65d49e4b0540d9dd0f918",
+    title: "Firehouse Subs",
+    position: {lat: 33.38496125, lng: -111.8067624}
+    },
+    {
+    id: "51c4ac3c498e29ade2521b06",
+    title: "Republica Empanada",
+    position: {lat: 33.413119617731645, lng: -111.82601512041239}
+    },
+    {
+    id: "4a441656f964a5201ba71fe3",
+    title: "Pita Jungle",
+    position: {lat: 33.39177632454111, lng: -111.78789496421814}
+    },
+    {
+    id: "4bfd7254b68d0f4743cde857",
+    title: "India Oven",
+    position: {lat: 33.39177632454111, lng: -111.78789496421814}
     }
   ];
   

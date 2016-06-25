@@ -63,7 +63,6 @@ var app = app || {};
     self.renderMapMarkers = function() {
       // Clear all existing markers first.
       self.clearAllMarkers();
-      console.log(self.filteredLocations());
       self.filteredLocations().forEach(function(loc) {
         loc.mapMarker.setMap(app.map);
       });
