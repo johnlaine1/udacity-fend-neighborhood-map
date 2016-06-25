@@ -4,26 +4,38 @@ var app = app || {};
 
 (function() {
   'use strict';
-  
   // This one instance of the infoWindow will be used by all functions.
   // Per Google, it's best practice to only have one infoWindow open at a time.
-  app.infoWindow = new google.maps.InfoWindow({});
-  
+
   app.initMap = function() {
-    var map;
-    var mapCenter = {lat: 33.386463, lng: -111.805832};
+    // We wrap the contents of this function in an if statement to see if the
+    // google script (which is loading async defer) has loaded yet. In order
+    // to avoid errors, we need this function to be available, but the contents
+    // or more precisely, the calls to 'google' not to be called until we know
+    // that the 'google' script has finished loading.
+    if (typeof google !== 'undefined') { 
+      var map;
+      var mapCenter = {lat: 33.386463, lng: -111.805832};
+      
+      app.infoWindow = new google.maps.InfoWindow({});
+      
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: mapCenter,
+        scrollwheel: false,
+        zoom: 12
+      });  
+      
+      google.maps.event.addDomListener(window, 'resize', function() {
+        map.setCenter(mapCenter);
+      }); 
     
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: mapCenter,
-      scrollwheel: false,
-      zoom: 12
-    });  
-    
-  google.maps.event.addDomListener(window, 'resize', function() {
-    map.setCenter(mapCenter);
-  }); 
+      app.map = map;
+    }
+  };
   
-  app.map = map;
+  app.googleError = function() {
+    console.log('There has been an error');
+    document.getElementById('page-content').innerHTML = '<h1>Sorry, Google Maps has failed to load</h1>';
   };
   
 })();

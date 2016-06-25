@@ -76,7 +76,6 @@ var app = app || {};
     };
 
     window.addEventListener('load', function() {
-      app.initMap();
       self.renderMapMarkers();
     });
 
