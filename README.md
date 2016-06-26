@@ -13,6 +13,7 @@ will appear in an info window above the selected map marker.
 2. Be sure to have both npm and bower installed on your machine and then from the command line run `npm install && bower install` to install needed packages.
 3. Run `gulp serve:dist` and point your browser to localhost:8080
 4. Alternatively you can run just run `gulp` instead of `gulp serve:dist` and point your browser to /dist/index.html
+5. This site is also published on github.io and can be viewed [here](https://johnlaine1.github.io/udacity-fend-neighborhood-map/).
 
 
 ## Attribution
