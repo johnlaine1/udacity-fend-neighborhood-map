@@ -87,5 +87,5 @@ gulp.task('clean', function() {
 // Push build to gh-pages
 gulp.task('deploy', function() {
   return gulp.src('./dist/**/*')
-    .pipe(deploy())
+    .pipe(deploy());
 });
