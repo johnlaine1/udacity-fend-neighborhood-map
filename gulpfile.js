@@ -8,6 +8,7 @@ var cleanCss = require('gulp-clean-css');
 var imageMin = require('gulp-imagemin');
 var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
+var deploy = require('gulp-gh-pages');
 var del = require('del');
 var reload = browserSync.reload;
 var port = 8080;
@@ -81,4 +82,10 @@ gulp.task('default', ['clean'], function() {
 // Clean output directory.
 gulp.task('clean', function() {
   return del(['dist/*', '!dist/.git']);
+});
+
+// Push build to gh-pages
+gulp.task('deploy', function() {
+  return gulp.src('./dist/**/*')
+    .pipe(deploy())
 });
