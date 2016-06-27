@@ -15,7 +15,7 @@ var app = app || {};
     // that the 'google' script has finished loading.
     if (typeof google !== 'undefined') { 
       var mapCenter = {lat: 33.386463, lng: -111.805832};
-      var mapZoom = 11;
+      var mapZoom = 12;
       
       // We will share one infoWindow amoung all markers.
       app.infoWindow = new google.maps.InfoWindow({});
