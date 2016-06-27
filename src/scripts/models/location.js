@@ -165,7 +165,6 @@ var app = app || {};
   app.Location.prototype.getDataSuccess = function() {
     var self = this;
       return function(res) {
-        console.log(res);
         // Show the info window
         app.infoWindow.setContent(self.infoWindowContent(res.response.venue));
         app.infoWindow.open(app.map, self.mapMarker);
