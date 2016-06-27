@@ -13,8 +13,14 @@ will appear in an info window above the selected map marker.
 2. Be sure to have both npm and bower installed on your machine and then from the command line run `npm install && bower install` to install needed packages.
 3. Run `gulp serve:dist` and point your browser to localhost:8080
 4. Alternatively you can run just run `gulp` instead of `gulp serve:dist` and point your browser to /dist/index.html
-5. This site is also published on github.io and can be viewed [here](https://johnlaine1.github.io/udacity-fend-neighborhood-map/).
+5. This application is also published on github.io and can be viewed [here](https://johnlaine1.github.io/udacity-fend-neighborhood-map/).
 
+## Using the Application
+When the app starts you will see a map with various map markers indicating the location of restaurants. Click on a marker to see more information about that restaurant.
+
+Click the hamburger icon in the upper left screen area to open a drawer from the left, here you will find a list of all restaurants along with a search box to narrow down the results.
+
+If you choose 'Exact', only locations that exactly match your search phrase will be shows, if you choose 'Contains', then any location that contains your search phrase will be show.
 
 ## Attribution
 Location data provided by [FourSquare](https://foursquare.com).
