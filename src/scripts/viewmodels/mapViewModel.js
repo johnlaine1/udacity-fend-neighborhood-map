@@ -62,7 +62,7 @@ var app = app || {};
     });
 
     // Show the infoWindow for the passed in location object
-    self.showMarkerInfoWindow = function(location) {
+    self.locationItemClick = function(location) {
       location.getData()
         .done(location.getDataSuccess())
         .fail(location.getDataFail());
