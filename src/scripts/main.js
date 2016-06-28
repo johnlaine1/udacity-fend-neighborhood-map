@@ -19,6 +19,7 @@ var app = app || {};
       
       // We will share one infoWindow amoung all markers.
       app.infoWindow = new google.maps.InfoWindow({});
+      app.mapBounds = new google.maps.LatLngBounds();
       
       app.map = new google.maps.Map(document.getElementById('map'), {
         center: mapCenter,
@@ -28,6 +29,7 @@ var app = app || {};
       
       google.maps.event.addDomListener(window, 'resize', function() {
         app.map.setCenter(mapCenter);
+        app.map.fitBounds(app.mapBounds);
       }); 
       
       ko.applyBindings(new app.MapViewModel());

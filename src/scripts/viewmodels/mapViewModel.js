@@ -23,17 +23,16 @@ var app = app || {};
     // Returns an array of locations filtered by the search input.
     self.filteredLocations = ko.computed(function() {
       var filter = self.searchInput().toLowerCase();
-      var bounds = new google.maps.LatLngBounds();
       var title;
       
       // If there is no filter value, show all locations.
       if (!filter) {
         self.locationList().forEach(function(loc) {
           loc.mapMarker.setVisible(true);
-          bounds.extend(loc.coords);
+          app.mapBounds.extend(loc.coords);
         });
         
-        app.map.fitBounds(bounds);
+        app.map.fitBounds(app.mapBounds);
         return self.locationList();
       } else {
           return self.locationList().filter(function(location) {
