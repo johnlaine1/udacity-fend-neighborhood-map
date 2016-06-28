@@ -15,7 +15,7 @@ var app = app || {};
     });
     
     // Grab the search value entered by the user.
-    self.searchInput = ko.observable("");
+    self.searchInput = ko.observable('');
     
     // Get the search type entered by the user, default is exact.
     self.searchType = ko.observable('exact');

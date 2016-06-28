@@ -26,11 +26,10 @@ var app = app || {};
         scrollwheel: false,
         zoom: mapZoom
       });  
-      
-      google.maps.event.addDomListener(window, 'resize', function() {
-        app.map.setCenter(mapCenter);
+
+      window.onresize = function() {
         app.map.fitBounds(app.mapBounds);
-      }); 
+      };
       
       ko.applyBindings(new app.MapViewModel());
     }
