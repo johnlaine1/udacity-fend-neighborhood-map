@@ -1,4 +1,4 @@
-/* global google */
+/* global google ko */
 
 var app = app || {};
 
@@ -14,8 +14,8 @@ var app = app || {};
     // or more precisely, the calls to 'google' not to be called until we know
     // that the 'google' script has finished loading.
     if (typeof google !== 'undefined') { 
-      var mapCenter = {lat: 33.386463, lng: -111.805832};
-      var mapZoom = 12;
+      var mapCenter = new google.maps.LatLng(33.386463, -111.805832);
+      var mapZoom = 10;
       
       // We will share one infoWindow amoung all markers.
       app.infoWindow = new google.maps.InfoWindow({});
@@ -29,7 +29,8 @@ var app = app || {};
       google.maps.event.addDomListener(window, 'resize', function() {
         app.map.setCenter(mapCenter);
       }); 
-    
+      
+      ko.applyBindings(new app.MapViewModel());
     }
   };
   

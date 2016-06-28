@@ -1,0 +1,7 @@
+Changes made in response to reviewer comments
+
+1. In mapViewModel.js file, line 33, remove parenthesis after location.title
+2. In mapViewModel.js file, Remove  app.MapViewModel::filteredLocationson.subscribe() and refactor app.MapViewModel::filteredLocations to use the setVisible() method instead.
+3. Rename map.js to main.js
+4. Put the line of code from app.js line 8 `ko.applyBindings(new app.MapViewModel());` into main.js inside of the app.initMap() function
+5. In mapViewModel.js, line 30-36, use the fitBounds() method to have the map dynamically zoom to the right level to include all markers.

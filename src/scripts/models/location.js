@@ -122,6 +122,7 @@ var app = app || {};
     self.id = data.id;
     self.title = data.title;
     self.position = data.position;
+    self.coords = new google.maps.LatLng(data.position.lat, data.position.lng);
     self.mapMarker = new google.maps.Marker({
       position: {lat: self.position.lat, lng: self.position.lng},
       title: self.title,
