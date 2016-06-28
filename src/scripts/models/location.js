@@ -136,6 +136,11 @@ var app = app || {};
         .done(self.getDataSuccess())
         .fail(self.getDataFail()); 
     });
+    
+    self.mapMarker.addListener('click', function() {
+      app.map.setZoom(15);
+      app.map.setCenter(self.mapMarker.getPosition());
+    });
   }; 
   
   app.Location.prototype.infoWindowContent = function(data) {

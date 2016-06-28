@@ -66,6 +66,10 @@ var app = app || {};
       location.getData()
         .done(location.getDataSuccess())
         .fail(location.getDataFail());
+      
+      // Zoom to and center on marker for which the list item relates.
+      app.map.setZoom(15);
+      app.map.setCenter(location.mapMarker.getPosition());
     };
 
     window.addEventListener('load', function() {
