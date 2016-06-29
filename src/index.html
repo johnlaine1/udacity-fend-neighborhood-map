@@ -13,7 +13,7 @@
     <label for="drawer-toggle" id="drawer-toggle-label"></label>
     <header><img src="images/favicon.ico"> Neighborhood Map</header> 
     
-      <div id="drawer">
+      <nav id="drawer">
         <h3 id="drawer-title">Locations</h3>
         <input id="search-input" placeholder="Filter Results" data-bind="textInput: searchInput">
         <div id="search-options">
@@ -25,14 +25,14 @@
             <h3 class="location-title" data-bind="text: title"></h3>
           </div><!-- end location-item -->
         </div><!-- end location-list -->
-      </div><!-- end drawer -->
+      </nav><!-- end drawer -->
       
-      <div id="page-content">
-        <div id="map"></div>
-        <div id="foursquare-attribution">
+      <main id="page-content">
+        <section id="map"></section>
+        <footer id="foursquare-attribution">
           Data provided by <a href="https://foursquare.com">FourSquare</a>
-        </div>
-      </div><!-- end page-content -->
+        </footer>
+      </main><!-- end page-content -->
         
     <!-- Scripts -->    
     <script src="lib/knockout/dist/knockout.js"></script>
