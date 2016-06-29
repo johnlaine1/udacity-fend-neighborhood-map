@@ -4,11 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Neighborhood Map</title>
-    <link rel="stylesheet" href="styles/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    
+    <!-- build:css css/styles.min.css -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- endbuild -->
+    
   </head>
   <body>
-    
     <input type="checkbox" id="drawer-toggle" name="drawer-toggle">
     <label for="drawer-toggle" id="drawer-toggle-label"></label>
     <header><img src="images/favicon.ico"> Neighborhood Map</header> 
@@ -34,12 +37,15 @@
         </footer>
       </main><!-- end page-content -->
         
-    <!-- Scripts -->    
+    <!-- build:js js/main.min.js -->
     <script src="lib/knockout/dist/knockout.js"></script>
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="scripts/models/location.js"></script> 
     <script src="scripts/viewmodels/mapViewModel.js"></script>
     <script src="scripts/main.js"></script> 
+    <!-- endbuild -->
+    
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT4X1z63nfvEq_ARb42yDjaqlCnaETv_E&libraries=places&callback=app.initMap" onerror="app.googleError()"></script>    
+
   </body>
 </html>
