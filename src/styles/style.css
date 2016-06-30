@@ -179,5 +179,4 @@ header {
 #drawer-toggle:checked ~ #page-content { 
   margin-left: calc(100% - 50px); 
 } 
-
 }

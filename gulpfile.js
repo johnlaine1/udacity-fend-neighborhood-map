@@ -2,9 +2,11 @@
 
 // Load our dependencies.
 var gulp = require('gulp');
+var sourcemaps = require('gulp-sourcemaps');
 var htmlMin = require('gulp-htmlmin');
 var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
+var lazypipe = require('lazypipe');
 var gulpIf = require('gulp-if');
 var cssNano = require('gulp-cssnano');
 var imageMin = require('gulp-imagemin');
@@ -20,12 +22,16 @@ var port = 8080;
 // Concat & Minify JS into one file, save to dist and update index.html
 gulp.task('js-css-min', function() {
   return gulp.src('src/index.html')
-    .pipe(useref())
+    
+    .pipe(useref({}, lazypipe().pipe(sourcemaps.init, { loadMaps: true })))
+    
     // Minifies only if it's a JavaScript file.
     .pipe(gulpIf('*.js', uglify()))
+    
     // Minifies only if it's a CSS file.
     .pipe(gulpIf('*.css', cssNano()))
-    .pipe(gulp.dest('dist'))
+    .pipe(sourcemaps.write('sourcemaps'))
+    .pipe(gulp.dest('dist'));
 });
 
 // Minify index.html after it has been altered by useref and copied to dist.
